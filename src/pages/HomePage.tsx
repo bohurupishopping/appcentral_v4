@@ -56,52 +56,59 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-2 sm:px-4 py-4 sm:py-8">
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6 text-indigo-600 dark:text-indigo-400"
-      >
-        Welcome to Bohurupi AppCentral
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-base sm:text-lg md:text-xl text-center mb-6 sm:mb-10 text-gray-600 dark:text-gray-300"
-      >
-        Your one-stop solution for all your information needs
-      </motion.p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-        {pages.map((page, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-6 flex flex-col justify-center sm:py-12">
+      <div className="relative py-3 sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="relative px-4 py-10 bg-white dark:bg-gray-800 shadow-lg sm:rounded-3xl sm:p-20">
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * index, duration: 0.5 }}
-            className={`relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300`}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold text-center mb-8 text-indigo-600 dark:text-indigo-400"
           >
-            <div className={`absolute inset-0 bg-gradient-to-br ${page.color} opacity-75`}></div>
-            <div
-              className="absolute inset-0 bg-cover bg-center filter blur-sm"
-              style={{ backgroundImage: page.clipart }}
-            ></div>
-            <div className="relative p-3 sm:p-4 md:p-6 flex flex-col h-full">
-              <div className="flex items-center mb-1 sm:mb-2">
-                <page.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white mr-1 sm:mr-2" />
-                <h2 className="text-sm sm:text-base md:text-lg font-semibold text-white">{page.title}</h2>
-              </div>
-              <p className="text-white text-opacity-90 text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4 flex-grow">{page.description}</p>
-              <Link
-                to={page.link}
-                className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-2 bg-white text-gray-800 rounded-full text-xs sm:text-sm font-medium hover:bg-gray-100 transition-colors duration-200"
+            Welcome to Bohurupi AppCentral
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-xl text-center mb-12 text-gray-600 dark:text-gray-300"
+          >
+            Your one-stop solution for all your information needs
+          </motion.p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pages.map((page, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300`}
               >
-                View
-              </Link>
-            </div>
-          </motion.div>
-        ))}
+                <div className={`absolute inset-0 bg-gradient-to-br ${page.color} opacity-75`}></div>
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-10"
+                  style={{ backgroundImage: page.clipart }}
+                ></div>
+                <div className="relative p-6 flex flex-col h-full">
+                  <div className="flex items-center mb-4">
+                    <page.icon className="w-8 h-8 text-white mr-3" />
+                    <h2 className="text-2xl font-bold text-white">{page.title}</h2>
+                  </div>
+                  <p className="text-white text-opacity-90 text-lg mb-6 flex-grow">{page.description}</p>
+                  <Link
+                    to={page.link}
+                    className="inline-flex items-center px-4 py-2 bg-white text-gray-800 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors duration-200"
+                  >
+                    Explore
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
